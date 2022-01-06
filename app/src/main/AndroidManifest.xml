@@ -20,24 +20,32 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Imran">
+        android:theme="@style/Theme.Imran"
+        android:usesCleartextTraffic="true">
         <activity android:name=".User.UserquestionActivity"></activity>
         <activity android:name=".Admin.ViewscoreActivity" />
         <activity android:name=".Admin.profileActivity" />
         <activity android:name=".Admin.EditquestionActivity" />
         <activity android:name=".Admin.Viewedit_questionActivity" />
-        <activity android:name=".Admin.AddquestionActivity" />
-        <activity android:name=".login.Council_loginActivity"></activity>
+        <activity android:name=".Admin.AddquestionActivity" >
+
+        </activity>
+        <activity android:name=".login.Council_loginActivity">
+
+        </activity>
         <activity android:name=".login.RegisterActivity"/>
 
         <activity android:name=".login.LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
-        <activity android:name=".Admin.MainActivity" />
+        <activity android:name=".Admin.MainActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>

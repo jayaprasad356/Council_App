@@ -28,6 +28,7 @@
             android:hint="Enter Question"
             android:layout_margin="5dp"
             android:textSize="16dp"
+            android:id="@+id/Question"
             />
 
         <LinearLayout
@@ -72,12 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         />
-                    <RadioButton
-                        android:id="@+id/radio_button_5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
 
-                       />
                 </RadioGroup>
 
 
@@ -92,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option 1"
+                android:id="@+id/option1"
 
 
                 />
@@ -99,22 +96,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option 2"
+                android:id="@+id/option2"
+
                 />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option 3"
+                android:id="@+id/option3"
+
                 />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option 4"
+                android:id="@+id/option4"
+
                 />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="option 5"
-                />
+
 
 
             </LinearLayout>
@@ -131,6 +130,7 @@
         android:layout_alignParentRight="true"
         android:layout_margin="30dp"
         android:text="next"
+        android:id="@+id/next_btn"
         />
 
   </RelativeLayout>

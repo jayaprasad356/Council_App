@@ -7,16 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.imran.Admin.MainActivity;
 import com.example.imran.R;
 import com.example.imran.User.UserquestionActivity;
-import com.google.android.material.textfield.TextInputLayout;
+import com.example.imran.helper.ApiConfig;
+import com.example.imran.helper.Constant;
+import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
     TextView register_tv;
-    TextInputLayout Sni_no,password;
+    TextInputEditText Sni_no,password;
     Button login_btn;
 
     @Override
@@ -39,10 +47,49 @@ public class LoginActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, UserquestionActivity.class);
-                startActivity(intent);
+                LoginUser();
+
             }
 
         });
+    }
+
+    private void LoginUser()
+    {
+        Map<String, String> params = new HashMap<>();
+        params.put(Constant.PASSWORD, password.getText().toString().trim());
+        params.put(Constant.SNI, Sni_no.getText().toString().trim());
+        ApiConfig.RequestToVolley((result, response) -> {
+            if (result) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+
+                        Intent intent = new Intent(LoginActivity.this,UserquestionActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(this, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
+
+                    }
+                    else {
+                        Toast.makeText(this, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+
+
+            }
+            else {
+                Toast.makeText(this, String.valueOf(response) +String.valueOf(result), Toast.LENGTH_SHORT).show();
+
+            }
+        }, LoginActivity.this, Constant.LOGIN_USER, params,true);
+
+
     }
 }
