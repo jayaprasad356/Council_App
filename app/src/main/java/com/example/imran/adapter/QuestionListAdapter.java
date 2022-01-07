@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imran.Admin.EditquestionActivity;
 import com.example.imran.R;
+import com.example.imran.helper.Constant;
 import com.example.imran.login.LoginActivity;
 import com.example.imran.login.RegisterActivity;
 import com.example.imran.model.Question;
@@ -45,8 +46,15 @@ public class QuestionListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, EditquestionActivity.class);
+                intent.putExtra(Constant.QUES_NO,question.getId());
+                intent.putExtra(Constant.QUESTION,question.getQuestion());
+                intent.putExtra(Constant.OPTION1,question.getOption_1());
+                intent.putExtra(Constant.OPTION2,question.getOption_2());
+                intent.putExtra(Constant.OPTION3,question.getOption_3());
+                intent.putExtra(Constant.OPTION4,question.getOption_4());
+                intent.putExtra(Constant.CORRECT_OPTION,question.getCorrect_option());
                 activity.startActivity(intent);
-            }
+                activity.finish();            }
         });
 
     }

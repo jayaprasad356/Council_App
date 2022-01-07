@@ -38,6 +38,14 @@
             android:layout_height="wrap_content"
             android:text="View Profile"
             style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginBottom="30dp"
+            />
+        <Button
+            android:id="@+id/resetbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset and Delete"
+            style="?attr/materialButtonOutlinedStyle"
             />
 
 

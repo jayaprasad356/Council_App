@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.imran">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -22,29 +23,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Imran"
         android:usesCleartextTraffic="true">
-        <activity android:name=".User.UserquestionActivity"></activity>
-        <activity android:name=".Admin.ViewscoreActivity" />
+        <activity android:name=".IntroActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".User.UserActivity"></activity>
+        <activity android:name=".User.UserquestionActivity" />
+        <activity android:name=".Admin.ViewuseranswersActivity" />
         <activity android:name=".Admin.profileActivity" />
         <activity android:name=".Admin.EditquestionActivity" />
         <activity android:name=".Admin.Viewedit_questionActivity" />
-        <activity android:name=".Admin.AddquestionActivity" >
+        <activity android:name=".Admin.AddquestionActivity" />
+        <activity android:name=".login.Council_loginActivity" />
+        <activity android:name=".login.RegisterActivity" />
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".Admin.MainActivity">
 
-        </activity>
-        <activity android:name=".login.Council_loginActivity">
-
-        </activity>
-        <activity android:name=".login.RegisterActivity"/>
-
-        <activity android:name=".login.LoginActivity" >
-
-
-        </activity>
-        <activity android:name=".Admin.MainActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
     </application>
 

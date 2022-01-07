@@ -14,6 +14,7 @@
         >
 
         <TextView
+            android:id="@+id/question_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Q.1"
@@ -23,9 +24,10 @@
             android:layout_margin="10dp"
             />
         <TextView
+            android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What is the capital of city in India?"
+            tools:text="What is the capital of city in India?"
             android:layout_margin="5dp"
             android:textSize="16dp"
             />
@@ -96,6 +98,7 @@
         android:layout_alignParentRight="true"
         android:layout_margin="30dp"
         android:text="next"
+        android:id="@+id/next_btn"
         />
 
 </RelativeLayout>

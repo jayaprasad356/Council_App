@@ -5,19 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.imran.R;
 import com.example.imran.adapter.QuestionListAdapter;
-import com.example.imran.adapter.UserListAdapter;
+import com.example.imran.adapter.UserAnswersAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
 import com.example.imran.model.Question;
-import com.example.imran.model.User;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -28,30 +24,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class profileActivity extends AppCompatActivity {
-
+public class ViewuseranswersActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    public static UserListAdapter questionListAdapter;
+    public static UserAnswersAdapter userAnswersAdapter;
 
     Activity activity;
+    String userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_viewuseranswers);
 
-        activity = profileActivity.this;
+        userid = getIntent().getStringExtra(Constant.USER_ID);
+
+        activity = ViewuseranswersActivity.this;
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
 
         recyclerView.setLayoutManager(linearLayoutManager);
-        UsersList();
-
+        QuestionList();
     }
-
-    private void UsersList() {
+    private void QuestionList()
+    {
         Map<String, String> params = new HashMap<>();
-        params.put(Constant.TYPE,"Users_list");
+        params.put(Constant.USER_ID,userid);
 
 
         ApiConfig.RequestToVolley((result, response) -> {
@@ -66,20 +63,20 @@ public class profileActivity extends AppCompatActivity {
                         JSONArray jsonArray = object.getJSONArray(Constant.DATA);
                         Gson g = new Gson();
 
-                        ArrayList<User> users = new ArrayList<>();
+                        ArrayList<Question> answers = new ArrayList<>();
 
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
                             if (jsonObject1 != null) {
-                                User user = g.fromJson(jsonObject1.toString(), User.class);
-                                users.add(user);
+                                Question question = g.fromJson(jsonObject1.toString(), Question.class);
+                                answers.add(question);
                             } else {
                                 break;
                             }
                         }
-                        questionListAdapter = new UserListAdapter(activity, users);
-                        recyclerView.setAdapter(questionListAdapter);
+                        userAnswersAdapter = new UserAnswersAdapter(activity, answers);
+                        recyclerView.setAdapter(userAnswersAdapter);
 
 
 
@@ -93,6 +90,6 @@ public class profileActivity extends AppCompatActivity {
                     Toast.makeText(activity, String.valueOf(e), Toast.LENGTH_SHORT).show();
                 }
             }
-        }, activity, Constant.LIST_USERS, params, true);
+        }, activity, Constant.LIST_USER_ANSWERS, params, true);
     }
 }

@@ -3,6 +3,7 @@ package com.example.imran.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.imran.R;
+import com.example.imran.User.UserActivity;
 import com.example.imran.User.UserquestionActivity;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
@@ -65,8 +67,11 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
-
-                        Intent intent = new Intent(LoginActivity.this,UserquestionActivity.class);
+                        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString(Constant.USER_ID, jsonObject.getString(Constant.ID));
+                        myEdit.commit();
+                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);

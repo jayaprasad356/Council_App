@@ -10,7 +10,6 @@
         android:layout_margin="8dp"
         app:strokeColor="@color/purple_700"
         app:strokeWidth="2dp"
-
         >
 
         <RelativeLayout
