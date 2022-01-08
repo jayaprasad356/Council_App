@@ -1,11 +1,13 @@
 package com.example.imran.helper;
 
 public class Constant {
-    public static final String MainBaseUrl = "http://192.168.43.122/resi_api/"; //Admin panel url
+    public static final String MainBaseUrl = "https://imranahmed.space/restapi/"; //Admin panel url
+    //public static final String MainBaseUrl = "http://192.168.43.122/resi_api/"; //Admin panel url
     //public static final String MainBaseUrl = "http://192.168.43.168/resi_api/"; //Admin panel url
     public static final String BaseUrl = MainBaseUrl + "api-firebase/";
     public static final String REGISTER_URL = BaseUrl + "register.php";
     public static final String LOGIN_USER = BaseUrl + "login.php";
+    public static final String LOGIN_COUNCIL = BaseUrl + "council_login.php";
     public static final String ADD_QUESTION = BaseUrl + "add_question.php";
     public static final String UPDATE_QUESTION = BaseUrl + "update_question.php";
     public static final String LIST_QUESTION = BaseUrl + "list_questions.php";

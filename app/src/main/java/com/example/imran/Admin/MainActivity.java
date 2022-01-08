@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.imran.IntroActivity;
 import com.example.imran.R;
+import com.example.imran.User.UserActivity;
 import com.example.imran.adapter.QuestionListAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
@@ -97,5 +99,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }, MainActivity.this, Constant.DELETE_QUESTION, params, true);
+    }
+
+    public void logout(View view) {
+        Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

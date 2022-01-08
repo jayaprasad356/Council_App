@@ -27,7 +27,6 @@ public class UserActivity extends AppCompatActivity {
 
     public void logout(View view) {
         Intent intent = new Intent(UserActivity.this, IntroActivity.class);
-        intent.putExtra(Constant.QUES_NO,"1");
         startActivity(intent);
         finish();
     }
