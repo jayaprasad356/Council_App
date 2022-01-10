@@ -1,4 +1,4 @@
-package com.example.imran.User;
+package com.example.imran.resident;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserquestionActivity extends AppCompatActivity {
+public class ResidentQuesActivity extends AppCompatActivity {
     RadioButton radioButton1,radioButton2,radioButton3,radioButton4;
     TextView quesnotv,question;
     Button next;
@@ -37,14 +37,14 @@ public class UserquestionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_userquestion);
+        setContentView(R.layout.activity_resident_ques);
 
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         userid = sh.getString(Constant.USER_ID, "");
 
 
 
-        activity = UserquestionActivity.this;
+        activity = ResidentQuesActivity.this;
         QuestionNo = getIntent().getStringExtra(Constant.QUES_NO);
         radioButton1 = findViewById(R.id.radio_button_1);
         radioButton2 = findViewById(R.id.radio_button_2);
@@ -88,7 +88,7 @@ public class UserquestionActivity extends AppCompatActivity {
                         SharedPreferences.Editor myEdit = sharedPreferences.edit();
                         myEdit.putString(Constant.USER_ANSWERED, Constant.TRUE);
                         myEdit.commit();
-                        Intent intent = new Intent(activity,UserquestionActivity.class);
+                        Intent intent = new Intent(activity, ResidentQuesActivity.class);
                         intent.putExtra(Constant.QUES_NO,String.valueOf(Integer.parseInt(QuestionNo) + 1));
                         startActivity(intent);
                         finish();
@@ -199,7 +199,7 @@ public class UserquestionActivity extends AppCompatActivity {
 
                     }
                     else {
-                        Intent intent = new Intent(activity,UserActivity.class);
+                        Intent intent = new Intent(activity, ResidentMainActivity.class);
                         startActivity(intent);
                         finish();
                         Toast.makeText(activity, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();

@@ -1,22 +1,17 @@
-package com.example.imran.Admin;
+package com.example.imran.Council;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.imran.R;
-import com.example.imran.adapter.QuestionListAdapter;
-import com.example.imran.adapter.UserListAdapter;
+import com.example.imran.adapter.ResidentAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
-import com.example.imran.model.Question;
 import com.example.imran.model.User;
 import com.google.gson.Gson;
 
@@ -28,19 +23,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class profileActivity extends AppCompatActivity {
+public class ResidentActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    public static UserListAdapter questionListAdapter;
+    public static ResidentAdapter questionListAdapter;
 
     Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_resident);
 
-        activity = profileActivity.this;
+        activity = ResidentActivity.this;
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
 
@@ -78,7 +73,7 @@ public class profileActivity extends AppCompatActivity {
                                 break;
                             }
                         }
-                        questionListAdapter = new UserListAdapter(activity, users);
+                        questionListAdapter = new ResidentAdapter(activity, users);
                         recyclerView.setAdapter(questionListAdapter);
 
 

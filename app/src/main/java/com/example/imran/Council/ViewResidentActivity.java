@@ -1,4 +1,4 @@
-package com.example.imran.Admin;
+package com.example.imran.Council;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,8 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.imran.R;
-import com.example.imran.adapter.QuestionListAdapter;
-import com.example.imran.adapter.UserAnswersAdapter;
+import com.example.imran.adapter.AnswersAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
 import com.example.imran.model.Question;
@@ -24,9 +23,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewuseranswersActivity extends AppCompatActivity {
+public class ViewResidentActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    public static UserAnswersAdapter userAnswersAdapter;
+    public static AnswersAdapter answersAdapter;
 
     Activity activity;
     String userid;
@@ -34,11 +33,11 @@ public class ViewuseranswersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewuseranswers);
+        setContentView(R.layout.activity_view_resident);
 
         userid = getIntent().getStringExtra(Constant.USER_ID);
 
-        activity = ViewuseranswersActivity.this;
+        activity = ViewResidentActivity.this;
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
 
@@ -75,8 +74,8 @@ public class ViewuseranswersActivity extends AppCompatActivity {
                                 break;
                             }
                         }
-                        userAnswersAdapter = new UserAnswersAdapter(activity, answers);
-                        recyclerView.setAdapter(userAnswersAdapter);
+                        answersAdapter = new AnswersAdapter(activity, answers);
+                        recyclerView.setAdapter(answersAdapter);
 
 
 

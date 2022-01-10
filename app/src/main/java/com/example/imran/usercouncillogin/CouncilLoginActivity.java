@@ -1,17 +1,15 @@
-package com.example.imran.login;
+package com.example.imran.usercouncillogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.imran.Admin.MainActivity;
+import com.example.imran.Council.MainActivity;
 import com.example.imran.R;
-import com.example.imran.User.UserActivity;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +20,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Council_loginActivity extends AppCompatActivity {
+public class CouncilLoginActivity extends AppCompatActivity {
 
     TextInputEditText email_council,password;
     Button login_btn;
@@ -59,7 +57,7 @@ public class Council_loginActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                        Intent intent = new Intent(Council_loginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(CouncilLoginActivity.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -81,7 +79,7 @@ public class Council_loginActivity extends AppCompatActivity {
                 Toast.makeText(this, String.valueOf(response) +String.valueOf(result), Toast.LENGTH_SHORT).show();
 
             }
-        }, Council_loginActivity.this, Constant.LOGIN_COUNCIL, params,true);
+        }, CouncilLoginActivity.this, Constant.LOGIN_COUNCIL, params,true);
 
     }
 

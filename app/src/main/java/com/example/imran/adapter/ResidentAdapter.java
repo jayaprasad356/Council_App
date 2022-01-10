@@ -11,18 +11,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.imran.Admin.ViewuseranswersActivity;
+import com.example.imran.Council.ViewResidentActivity;
 import com.example.imran.R;
 import com.example.imran.helper.Constant;
 import com.example.imran.model.User;
 
 import java.util.ArrayList;
 
-public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class ResidentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     final Activity activity;
     final ArrayList<User> users;
 
-    public UserListAdapter(Activity activity, ArrayList<User> users) {
+    public ResidentAdapter(Activity activity, ArrayList<User> users) {
         this.activity = activity;
         this.users = users;
     }
@@ -43,7 +43,7 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.Viewbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, ViewuseranswersActivity.class);
+                Intent intent = new Intent(activity, ViewResidentActivity.class);
                 intent.putExtra(Constant.USER_ID,user.getId());
                 activity.startActivity(intent);
                      }

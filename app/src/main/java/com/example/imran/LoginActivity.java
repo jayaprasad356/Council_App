@@ -1,4 +1,4 @@
-package com.example.imran.login;
+package com.example.imran;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.imran.R;
-import com.example.imran.User.UserActivity;
-import com.example.imran.User.UserquestionActivity;
+import com.example.imran.resident.ResidentMainActivity;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
 import com.google.android.material.textfield.TextInputEditText;
@@ -42,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         register_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -71,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences.Editor myEdit = sharedPreferences.edit();
                         myEdit.putString(Constant.USER_ID, jsonObject.getString(Constant.ID));
                         myEdit.commit();
-                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, ResidentMainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);

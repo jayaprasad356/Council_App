@@ -1,4 +1,4 @@
-package com.example.imran.Admin;
+package com.example.imran.Council;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,23 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.imran.R;
-import com.example.imran.User.UserquestionActivity;
-import com.example.imran.adapter.QuestionListAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
-import com.example.imran.login.RegisterActivity;
-import com.example.imran.model.Question;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddquestionActivity extends AppCompatActivity {
+public class EditquesActivity extends AppCompatActivity {
+    String Quesno,Question,Option1,Option2,Option3,Option4,Correct_Option;
     Button next;
     EditText question,option1,option2,option3,option4;
     RadioButton radioButton1,radioButton2,radioButton3,radioButton4;
@@ -40,9 +34,16 @@ public class AddquestionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addquestion);
+        setContentView(R.layout.activity_editques);
+        Quesno = getIntent().getStringExtra(Constant.QUES_NO);
+        Question = getIntent().getStringExtra(Constant.QUESTION);
+        Option1 = getIntent().getStringExtra(Constant.OPTION1);
+        Option2 = getIntent().getStringExtra(Constant.OPTION2);
+        Option3 = getIntent().getStringExtra(Constant.OPTION3);
+        Option4 = getIntent().getStringExtra(Constant.OPTION4);
+        Correct_Option = getIntent().getStringExtra(Constant.CORRECT_OPTION);
 
-        activity = AddquestionActivity.this;
+        activity = EditquesActivity.this;
 
         next = findViewById(R.id.next_btn);
         question = findViewById(R.id.Question);
@@ -55,7 +56,27 @@ public class AddquestionActivity extends AppCompatActivity {
         option3 = findViewById(R.id.option3);
         option4 = findViewById(R.id.option4);
         quesnotv = findViewById(R.id.question_no);
-        QuestionList();
+
+        quesnotv.setText("Q No. "+Quesno);
+        question.setText(Question);
+        option1.setText(Option1);
+        option2.setText(Option2);
+        option3.setText(Option3);
+        option4.setText(Option4);
+
+        if (Option1.equals(Correct_Option)){
+            radioButton1.setChecked(true);
+        }
+        else if (Option2.equals(Correct_Option)){
+            radioButton2.setChecked(true);
+        }
+        else if (Option3.equals(Correct_Option)){
+            radioButton3.setChecked(true);
+        }
+        else if (Option4.equals(Correct_Option)){
+            radioButton4.setChecked(true);
+        }
+
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,79 +99,24 @@ public class AddquestionActivity extends AppCompatActivity {
 
                 }
 
-               AddQuestion();
+                AddQuestion();
             }
         });
 
 
-
-
-
-
-
-
     }
-
-    private void QuestionList()
-    {
-        Map<String, String> params = new HashMap<>();
-        params.put(Constant.TYPE,"Queston_list");
-
-
-        ApiConfig.RequestToVolley((result, response) -> {
-
-            if (result) {
-                try {
-
-                    JSONObject jsonObject = new JSONObject(response);
-
-                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                        JSONObject object = new JSONObject(response);
-                        JSONArray jsonArray = object.getJSONArray(Constant.DATA);
-                        Gson g = new Gson();
-
-                        ArrayList<Question> questions = new ArrayList<>();
-
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                            if (jsonObject1 != null) {
-                                Question question = g.fromJson(jsonObject1.toString(), Question.class);
-                                questions.add(question);
-                            } else {
-                                break;
-                            }
-                        }
-                        quesnotv.setText("Q No. "+String.valueOf(questions.size() + 1));
-
-
-
-
-                    }
-                    else {
-                        Toast.makeText(activity, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(activity, String.valueOf(e), Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, activity, Constant.LIST_QUESTION, params, true);
-    }
-
-
 
     private void AddQuestion()
     {
         Map<String, String> params = new HashMap<>();
-        
-            params.put(Constant.QUESTION,question.getText().toString().trim());
-            params.put(Constant.OPTION1,option1.getText().toString().trim());
-            params.put(Constant.OPTION2,option2.getText().toString().trim());
-            params.put(Constant.OPTION3,option3.getText().toString().trim());
-            params.put(Constant.OPTION4,option4.getText().toString().trim());
-            params.put(Constant.CORRECT_OPTION,correctvalue.toString().trim());
+
+        params.put(Constant.QUES_NO,Quesno);
+        params.put(Constant.QUESTION,question.getText().toString().trim());
+        params.put(Constant.OPTION1,option1.getText().toString().trim());
+        params.put(Constant.OPTION2,option2.getText().toString().trim());
+        params.put(Constant.OPTION3,option3.getText().toString().trim());
+        params.put(Constant.OPTION4,option4.getText().toString().trim());
+        params.put(Constant.CORRECT_OPTION,correctvalue.toString().trim());
 
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
@@ -159,7 +125,7 @@ public class AddquestionActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
 
-                        Intent intent = new Intent(AddquestionActivity.this, AddquestionActivity.class);
+                        Intent intent = new Intent(activity, ManageQuesActivity.class);
 //
                         startActivity(intent);
                         finish();
@@ -180,7 +146,7 @@ public class AddquestionActivity extends AppCompatActivity {
                 Toast.makeText(this, String.valueOf(response) +String.valueOf(result), Toast.LENGTH_SHORT).show();
 
             }
-        }, AddquestionActivity.this, Constant.ADD_QUESTION, params,true);
+        }, activity, Constant.UPDATE_QUESTION, params,true);
 
 
     }

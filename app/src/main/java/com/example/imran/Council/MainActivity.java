@@ -1,28 +1,21 @@
-package com.example.imran.Admin;
+package com.example.imran.Council;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.imran.IntroActivity;
 import com.example.imran.R;
-import com.example.imran.User.UserActivity;
-import com.example.imran.adapter.QuestionListAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
-import com.example.imran.model.Question;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,21 +36,21 @@ public class MainActivity extends AppCompatActivity {
         add_question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddquestionActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddquesActivity.class);
                 startActivity(intent);
             }
         });
         viewedit_quetion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Viewedit_questionActivity.class);
+                Intent intent = new Intent(MainActivity.this, ManageQuesActivity.class);
                 startActivity(intent);
             }
         });
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, profileActivity.class);
+                Intent intent = new Intent(MainActivity.this, ResidentActivity.class);
                 startActivity(intent);
             }
         });

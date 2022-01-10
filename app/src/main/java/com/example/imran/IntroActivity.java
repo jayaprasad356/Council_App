@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.imran.Admin.MainActivity;
-import com.example.imran.login.Council_loginActivity;
-import com.example.imran.login.LoginActivity;
+import com.example.imran.usercouncillogin.CouncilLoginActivity;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -24,7 +22,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     public void adminlogin(View view) {
-        Intent intent = new Intent(IntroActivity.this, Council_loginActivity.class);
+        Intent intent = new Intent(IntroActivity.this, CouncilLoginActivity.class);
         startActivity(intent);
     }
 }

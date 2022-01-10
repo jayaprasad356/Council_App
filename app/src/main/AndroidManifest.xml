@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Imran"
         android:usesCleartextTraffic="true">
-        <activity android:name=".User.ViewSubmittedAnswerActivity" />
+        <activity android:name=".resident.ResidentAnswersActivity" />
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,17 +31,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".User.UserActivity" />
-        <activity android:name=".User.UserquestionActivity" />
-        <activity android:name=".Admin.ViewuseranswersActivity" />
-        <activity android:name=".Admin.profileActivity" />
-        <activity android:name=".Admin.EditquestionActivity" />
-        <activity android:name=".Admin.Viewedit_questionActivity" />
-        <activity android:name=".Admin.AddquestionActivity" />
-        <activity android:name=".login.Council_loginActivity" />
-        <activity android:name=".login.RegisterActivity" />
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".Admin.MainActivity" />
+        <activity android:name=".resident.ResidentMainActivity" />
+        <activity android:name=".resident.ResidentQuesActivity" />
+        <activity android:name=".Council.ViewResidentActivity" />
+        <activity android:name=".Council.ResidentActivity" />
+        <activity android:name=".Council.EditquesActivity" />
+        <activity android:name=".Council.ManageQuesActivity" />
+        <activity android:name=".Council.AddquesActivity" />
+        <activity android:name=".usercouncillogin.CouncilLoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Council.MainActivity" />
     </application>
 
 </manifest>

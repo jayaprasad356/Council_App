@@ -5,19 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User.UserActivity">
+    tools:context=".resident.ResidentMainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:layout_centerInParent="true"
+        android:src="@drawable/startbtn"
         android:id="@+id/getstarted"
         android:text="Get Started"/>
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
         android:onClick="logout"
         android:text="Logout"/>
 

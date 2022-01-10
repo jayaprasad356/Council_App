@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User.ViewSubmittedAnswerActivity">
+    android:background="@color/teal_200"
+    tools:context=".resident.ResidentAnswersActivity">
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
         android:onClick="logout"
         android:text="Logout"/>
     <LinearLayout
@@ -24,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_gravity="center"
+
             android:onClick="submitted_answers"
             android:text="View Submitted Answers"/>
 
@@ -34,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_gravity="center"
+            android:textColor="@color/black"
             android:text="You Already Submitted Answers"/>
 
     </LinearLayout>

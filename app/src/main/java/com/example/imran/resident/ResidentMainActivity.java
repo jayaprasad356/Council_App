@@ -1,4 +1,4 @@
-package com.example.imran.User;
+package com.example.imran.resident;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,32 +9,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.imran.Admin.ViewuseranswersActivity;
 import com.example.imran.IntroActivity;
 import com.example.imran.R;
-import com.example.imran.adapter.UserAnswersAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
-import com.example.imran.model.Question;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserActivity extends AppCompatActivity {
+public class ResidentMainActivity extends AppCompatActivity {
     String userid;
     Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
-        activity = UserActivity.this;
+        setContentView(R.layout.activity_resident_main);
+        activity = ResidentMainActivity.this;
     }
 
     @Override
@@ -60,7 +54,7 @@ public class UserActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
 
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                        Intent intent = new Intent(UserActivity.this, ViewSubmittedAnswerActivity.class);
+                        Intent intent = new Intent(ResidentMainActivity.this, ResidentAnswersActivity.class);
                         startActivity(intent);
                         finish();
                         Toast.makeText(activity, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
@@ -73,7 +67,7 @@ public class UserActivity extends AppCompatActivity {
                         findViewById(R.id.getstarted).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(UserActivity.this,UserquestionActivity.class);
+                                Intent intent = new Intent(ResidentMainActivity.this, ResidentQuesActivity.class);
                                 intent.putExtra(Constant.QUES_NO,"1");
                                 startActivity(intent);
                                 finish();
@@ -94,7 +88,7 @@ public class UserActivity extends AppCompatActivity {
 
 
     public void logout(View view) {
-        Intent intent = new Intent(UserActivity.this, IntroActivity.class);
+        Intent intent = new Intent(ResidentMainActivity.this, IntroActivity.class);
         startActivity(intent);
         finish();
     }

@@ -1,22 +1,17 @@
-package com.example.imran.Admin;
+package com.example.imran.Council;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.imran.R;
-import com.example.imran.adapter.QuestionListAdapter;
+import com.example.imran.adapter.QuestionAdapter;
 import com.example.imran.helper.ApiConfig;
 import com.example.imran.helper.Constant;
-import com.example.imran.login.LoginActivity;
-import com.example.imran.login.RegisterActivity;
 import com.example.imran.model.Question;
 import com.google.gson.Gson;
 
@@ -28,17 +23,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Viewedit_questionActivity extends AppCompatActivity {
+public class ManageQuesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    public static QuestionListAdapter questionListAdapter;
+    public static QuestionAdapter questionAdapter;
 
     Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewedit_question);
-        activity = Viewedit_questionActivity.this;
+        setContentView(R.layout.activity_manage_ques);
+        activity = ManageQuesActivity.this;
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
 
@@ -82,8 +77,8 @@ public class Viewedit_questionActivity extends AppCompatActivity {
                                 break;
                             }
                         }
-                        questionListAdapter = new QuestionListAdapter(activity, channels);
-                        recyclerView.setAdapter(questionListAdapter);
+                        questionAdapter = new QuestionAdapter(activity, channels);
+                        recyclerView.setAdapter(questionAdapter);
 
 
 
