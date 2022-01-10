@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Imran"
         android:usesCleartextTraffic="true">
+        <activity android:name=".User.ViewSubmittedAnswerActivity" />
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".User.UserActivity"></activity>
+        <activity android:name=".User.UserActivity" />
         <activity android:name=".User.UserquestionActivity" />
         <activity android:name=".Admin.ViewuseranswersActivity" />
         <activity android:name=".Admin.profileActivity" />
@@ -40,9 +41,7 @@
         <activity android:name=".login.Council_loginActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".Admin.MainActivity">
-
-        </activity>
+        <activity android:name=".Admin.MainActivity" />
     </application>
 
 </manifest>

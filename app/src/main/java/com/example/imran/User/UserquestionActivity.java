@@ -84,6 +84,10 @@ public class UserquestionActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
 
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString(Constant.USER_ANSWERED, Constant.TRUE);
+                        myEdit.commit();
                         Intent intent = new Intent(activity,UserquestionActivity.class);
                         intent.putExtra(Constant.QUES_NO,String.valueOf(Integer.parseInt(QuestionNo) + 1));
                         startActivity(intent);

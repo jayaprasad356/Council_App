@@ -56,27 +56,27 @@
                         android:id="@+id/radio_button_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="New Delhi"
+                        tools:text="New Delhi"
                         />
                     <RadioButton
                         android:id="@+id/radio_button_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chennai"
+                        tools:text="Chennai"
 
                         />
                     <RadioButton
                         android:id="@+id/radio_button_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chennai"
+                        tools:text="Chennai"
 
                         />
                     <RadioButton
                         android:id="@+id/radio_button_4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mumbai"
+                        tools:text="Mumbai"
 
                         />
 
